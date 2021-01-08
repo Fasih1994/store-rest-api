@@ -1,10 +1,9 @@
 from resources.user import UserModel
-from werkzeug.security import check_password_hash
 
 
 def authenticate(username, password):
     user = UserModel.find_by_username(username)
-    if user and check_password_hash(user.password, password):
+    if user and user.password == password:
         return user
 
 
